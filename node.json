@@ -1,0 +1,23 @@
+{
+    "taskDefinition": {
+        "volumes": [],
+        "containerDefinitions": [
+            {
+                "name": "node-app",
+                "image": "390161664430.dkr.ecr.ap-south-1.amazonaws.com/node-app:CURRENT_BUILD",
+                "cpu": 100,
+                "portMappings": [
+                    {
+                        "containerPort": 8080,
+                        "hostPort": 80
+                    }
+                ],
+                "memory": 250,
+                "memoryReservation": 200,
+                "essential": true
+            }
+        ],
+        "family": "node-app",
+        "revision": 1
+    }
+}
