@@ -10,7 +10,8 @@ aws ecs register-task-definition --family node-app --cli-input-json file://node-
 # Update the service with the new task definition and desired count
 TASK_REVISION=`aws ecs describe-task-definition --task-definition node-app --region ap-south-1 | egrep "revision" | tr "/" " " | awk '{print $2}' | sed 's/"$//'`
 DESIRED_COUNT=`aws ecs describe-services --services ${SERVICE_NAME} --region ap-south-1 | egrep "desiredCount" | tr "/" " " | awk '{print $2}' | sed 's/,$//'`
-if [ ${DESIRED_COUNT} == "0" ]; then
+echo $DESIRED_COUNT
+if [ $DESIRED_COUNT == "0" ]; then
     DESIRED_COUNT="1"
 fi
 
